@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Konquer - To-Do & Task Management</title>
+  <meta name="description" content="Conquer every single task with Konquer to-do list and project tracker.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/variables.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="/src/styles/components.css">
+</head>
+<body>
+  <div id="app">
+    
+    <!-- VIEW: Onboarding -->
+    <section id="view-onboarding" class="view-section">
+      <div id="onboarding-container"></div>
+    </section>
+
+    <!-- VIEW: Login -->
+    <section id="view-login" class="view-section">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1>Login your Account.</h1>
+          <p>Welcome back! Please enter your details.</p>
+        </div>
+
+        <form id="login-form">
+          <div class="input-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" class="input-field" placeholder="Enter your email" required autocomplete="email">
+          </div>
+          <div class="input-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" class="input-field" placeholder="••••••••" required autocomplete="current-password">
+          </div>
+          
+          <button type="submit" class="btn-primary" style="margin-top: 12px;">Login</button>
+        </form>
+
+        <div class="auth-divider">
+          <span>Or</span>
+        </div>
+
+        <button id="google-login-btn" class="btn-secondary google-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          Login with Google
+        </button>
+
+        <div class="auth-footer-link">
+          If you don't have an account, <a id="to-signup-link">click here</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: Sign Up -->
+    <section id="view-signup" class="view-section">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1>Create an account</h1>
+          <p>Start organizing your tasks with Konquer today.</p>
+        </div>
+
+        <form id="signup-form">
+          <div class="input-group">
+            <label for="signup-name">Name</label>
+            <input type="text" id="signup-name" class="input-field" placeholder="Enter your full name" required>
+          </div>
+          <div class="input-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" class="input-field" placeholder="Enter your email" required autocomplete="email">
+          </div>
+          <div class="input-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" class="input-field" placeholder="••••••••" required autocomplete="new-password">
+          </div>
+
+          <button type="submit" class="btn-primary" style="margin-top: 12px;">Create an account</button>
+        </form>
+
+        <div class="auth-divider">
+          <span>Or</span>
+        </div>
+
+        <button id="google-signup-btn" class="btn-secondary google-btn">
+          Create with Google
+        </button>
+
+        <div class="auth-footer-link">
+          If you have an account, <a id="to-login-link">click here</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: OTP Email Verification -->
+    <section id="view-otp-verify" class="view-section">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1>Verify your email</h1>
+          <p id="otp-email-notice">We sent a 4-digit code to your email address.</p>
+        </div>
+
+        <div class="otp-container">
+          <input type="text" maxlength="1" class="otp-box" value="2">
+          <input type="text" maxlength="1" class="otp-box" value="2">
+          <input type="text" maxlength="1" class="otp-box" value="2">
+          <input type="text" maxlength="1" class="otp-box" value="2">
+        </div>
+
+        <button id="verify-otp-btn" class="btn-primary">Verify</button>
+      </div>
+    </section>
+
+    <!-- VIEW: Home Dashboard -->
+    <section id="view-home" class="view-section">
+      <div class="app-header">
+        <div class="user-greeting">
+          <h3 id="home-greeting-sub">Good afternoon</h3>
+          <h1 id="home-user-name">Hi Jennifer!</h1>
+        </div>
+        <button class="header-action-btn" id="header-profile-btn" title="Profile">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Welcome Banner -->
+      <div style="background: linear-gradient(135deg, rgba(108, 92, 231, 0.25) 0%, rgba(0, 184, 148, 0.15) 100%); border: 1px solid var(--border-active); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 24px;">
+        <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 6px;">Welcome!</h2>
+        <p style="font-size: 0.9rem; color: var(--text-secondary);">Let schedule your projects and conquer your day.</p>
+      </div>
+
+      <!-- Ongoing Projects Carousel -->
+      <div class="section-title-row">
+        <h2>Ongoing projects</h2>
+        <span class="link-action" id="view-all-projects-btn">View all</span>
+      </div>
+      <div class="projects-scroll" id="home-projects-container"></div>
+
+      <!-- Today's Tasks -->
+      <div class="section-title-row">
+        <h2>Today's Tasks</h2>
+        <span style="font-size: 0.8rem; color: var(--text-muted);" id="today-date-text"></span>
+      </div>
+      <div id="home-tasks-container"></div>
+    </section>
+
+    <!-- VIEW: Tasks Overview -->
+    <section id="view-tasks" class="view-section">
+      <div class="app-header">
+        <div class="user-greeting">
+          <h3>Task Manager</h3>
+          <h1>My Schedule</h1>
+        </div>
+        <button class="header-action-btn" id="open-add-task-header-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div id="full-tasks-container"></div>
+    </section>
+
+    <!-- VIEW: Focus Timer -->
+    <section id="view-timer" class="view-section">
+      <div class="app-header">
+        <div class="user-greeting">
+          <h3>Focus Mode</h3>
+          <h1>Timer & Alarm</h1>
+        </div>
+      </div>
+
+      <div class="timer-container">
+        <div class="timer-dial">
+          <div class="timer-digits" id="timer-digits">25:00</div>
+          <div class="timer-status-text" id="timer-status">READY TO FOCUS</div>
+        </div>
+
+        <div class="timer-controls">
+          <button class="btn-primary" id="timer-toggle-btn">Start Focus</button>
+          <button class="btn-secondary" id="timer-reset-btn" style="width: auto;">Reset</button>
+        </div>
+
+        <!-- Quick Preset Duration Buttons -->
+        <div style="display: flex; gap: 8px; margin-top: 24px;">
+          <button class="btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="window.konquerSetTimer(15)">15m</button>
+          <button class="btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="window.konquerSetTimer(25)">25m</button>
+          <button class="btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="window.konquerSetTimer(45)">45m</button>
+          <button class="btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="window.konquerSetTimer(60)">60m</button>
+        </div>
+
+        <div style="width: 100%; margin-top: 36px;">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 12px;">Recent Timer History</h3>
+          <div id="timer-history-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: Profile & Settings -->
+    <section id="view-profile" class="view-section">
+      <div class="app-header">
+        <div class="user-greeting">
+          <h3>User Settings</h3>
+          <h1>My Profile</h1>
+        </div>
+      </div>
+      <div id="profile-container"></div>
+    </section>
+
+    <!-- FAB: Add Task Button -->
+    <button class="fab-add" id="fab-add" title="Add Task">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+    </button>
+
+    <!-- TAB BAR NAVIGATION -->
+    <nav class="tab-bar" id="tab-bar">
+      <button class="tab-item active" data-target="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="tab-item" data-target="tasks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span>Task</span>
+      </button>
+      <button class="tab-item" data-target="timer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Time</span>
+      </button>
+      <button class="tab-item" data-target="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+
+    <!-- MODAL: Add Task -->
+    <div class="modal-overlay" id="add-task-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Add New Task</h3>
+          <button class="close-btn" id="close-add-task-modal">&times;</button>
+        </div>
+        
+        <form id="add-task-form">
+          <div class="input-group">
+            <label for="task-title-input">What do you want to do</label>
+            <input type="text" id="task-title-input" class="input-field" placeholder="e.g. Design for cirvee, Math lesson" required>
+          </div>
+          <div class="input-group">
+            <label for="task-summary-input">Summary / Details</label>
+            <input type="text" id="task-summary-input" class="input-field" placeholder="Brief description of task">
+          </div>
+          <div class="input-group">
+            <label for="task-date-input">Pick a date</label>
+            <input type="date" id="task-date-input" class="input-field" required>
+          </div>
+          <div class="input-group">
+            <label for="task-time-input">Enter time</label>
+            <input type="time" id="task-time-input" class="input-field" value="09:00" required>
+          </div>
+
+          <button type="submit" class="btn-primary" style="margin-top: 16px;">Submit Task</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

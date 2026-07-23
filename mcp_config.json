@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "figma": {
+      "serverUrl": "http://localhost:3845/sse",
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "figd_bM7c0m2kS4Bs0QCHD5uqIW7sZGsXnk4XchgSbM6m"
+      }
+    }
+  }
+}
